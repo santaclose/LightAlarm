@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp" >
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        android:theme="?attr/actionBarTheme">-->
+<!--        <ImageButton-->
+<!--            android:onClick="OnBackButtonClicked"-->
+<!--            android:src="@drawable/ic_baseline_arrow_back_24"-->
+<!--            android:layout_width="?attr/actionBarSize"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="@drawable/toolbar_button"/>-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+    <LinearLayout
+        android:id="@+id/dayOfWeekRow"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp">
+        <ToggleButton
+            android:id="@+id/sundayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="S"
+            android:textOff="S"
+            android:text="S"/>
+        <ToggleButton
+            android:id="@+id/mondayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="M"
+            android:textOff="M"
+            android:text="M"/>
+        <ToggleButton
+            android:id="@+id/tuesdayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="T"
+            android:textOff="T"
+            android:text="T"/>
+        <ToggleButton
+            android:id="@+id/wednesdayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="W"
+            android:textOff="W"
+            android:text="W"/>
+        <ToggleButton
+            android:id="@+id/thursdayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="T"
+            android:textOff="T"
+            android:text="T"/>
+        <ToggleButton
+            android:id="@+id/fridayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="F"
+            android:textOff="F"
+            android:text="F"/>
+        <ToggleButton
+            android:id="@+id/saturdayToggle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/week_day_toggle"
+            android:textOn="S"
+            android:textOff="S"
+            android:text="S"/>
+    </LinearLayout>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dayOfWeekRow"
+        android:layout_gravity="center" />
+
+    <Switch
+        android:id="@+id/flashlightSwitch"
+        android:layout_margin="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/timePicker"
+        android:text="Flashlight" />
+
+    <Switch
+        android:id="@+id/vibrationSwitch"
+        android:layout_margin="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/flashlightSwitch"
+        android:text="Vibration" />
+
+    <Switch
+        android:id="@+id/ringtoneSwitch"
+        android:layout_margin="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/vibrationSwitch"
+        android:text="Ringtone" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Save"
+        android:onClick="OnSaveButtonClicked" />
+
+</RelativeLayout>
