@@ -14,10 +14,12 @@
         <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/activity_add_alarm.xml" value="0.33" />
         <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/activity_alarm_ringer.xml" value="0.42028985507246375" />
         <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/activity_edit_alarm.xml" value="0.4008152173913043" />
-        <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/activity_main.xml" value="0.3759057971014493" />
+        <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/alarm_row.xml" value="0.3859375" />
+        <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/layout/settings_activity.xml" value="0.271875" />
         <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3484375" />
         <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3484375" />
+        <entry key="..\:/Users/santi/StudioProjects/Alarm_setter/app/src/main/res/xml/root_preferences.xml" value="0.33229166666666665" />
       </map>
     </option>
   </component>

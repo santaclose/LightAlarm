@@ -15,33 +15,36 @@
         android:theme="?attr/actionBarTheme">
         <ImageButton
             android:layout_gravity="end"
-            android:src="@drawable/ic_baseline_menu_24"
+            android:src="@drawable/ic_baseline_settings_24"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/toolbar_button"/>
+            android:background="@drawable/toolbar_button"
+            android:onClick="OnSettingsButtonClicked"
+            />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
         android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:layout_alignParentBottom="true"
-        android:layout_height="100dp" />
+        android:layout_alignParentBottom="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addAlarmButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="191dp"
+        android:layout_height="161dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="end"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:clickable="true"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="OnAddAlarmButtonClicked"
         android:tint="#fff"
+        app:borderWidth="0dp"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
 </RelativeLayout>

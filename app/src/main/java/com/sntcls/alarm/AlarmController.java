@@ -51,4 +51,19 @@ public class AlarmController
             EnableAlarm(alarmId, context);
         }
     }
+
+    public static void EnableSnoozeAlarm(int alarmId, Context context)
+    {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+
+        AlarmData alarmData = new AlarmData();
+        alarmData.fromString(prefs.getString("" + alarmId, null));
+
+        long targetTime = System.currentTimeMillis();
+        targetTime += ((long)prefs.getInt("pref_snooze_time", 5)) * 60 * 1000; // minutes to milliseconds
+        PendingIntent alarmIntent = alarmData.generateIntent(context, alarmId);
+        AlarmManager.AlarmClockInfo aci = new AlarmManager.AlarmClockInfo(targetTime, alarmIntent);
+        alarmManager.setAlarmClock(aci, alarmIntent);
+    }
 }

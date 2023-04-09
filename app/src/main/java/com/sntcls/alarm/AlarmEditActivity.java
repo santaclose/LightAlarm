@@ -116,6 +116,8 @@ public class AlarmEditActivity extends AppCompatActivity {
             String currentAlarmList = prefs.getString("alarmList", "");
             prefsEditor.putString("alarmList", currentAlarmList + (currentAlarmList.length() > 0 ? "," : "") + alarmIdCounter);
             prefsEditor.putInt("alarmIdCounter", alarmIdCounter + 1);
+            if (prefs.getBoolean("pref_enable_alarm_on_save", true))
+                prefsEditor.putBoolean("" + alarmIdCounter + "e", true);
             prefsEditor.apply();
             AlarmController.OnAlarmChanged(alarmIdCounter, view.getContext());
 
@@ -124,6 +126,8 @@ public class AlarmEditActivity extends AppCompatActivity {
         else
         {
             prefsEditor.putString("" + alarmToEditId, alarmData.toString());
+            if (prefs.getBoolean("pref_enable_alarm_on_save", true))
+                prefsEditor.putBoolean("" + alarmToEditId + "e", true);
             prefsEditor.apply();
             AlarmController.OnAlarmChanged(alarmToEditId, view.getContext());
 

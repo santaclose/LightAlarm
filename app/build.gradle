@@ -3,15 +3,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.sntcls.alarm"
         minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 31
+        versionCode 4
+        versionName "1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,10 +29,14 @@ android {
 }
 
 dependencies {
+    implementation files('libs/unity-ads.aar')
+    implementation 'com.google.android.gms:play-services-ads:21.4.0'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'com.google.android.gms:play-services-ads:21.4.0'
+    implementation 'androidx.preference:preference:1.1.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -24,6 +24,7 @@ public class AlarmListAdapter extends RecyclerView.Adapter<AlarmListAdapter.View
     private final SharedPreferences sharedPrefs;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final View topBorderView;
         private final TextView textView;
         private final ImageView flashlightIcon;
         private final ImageView vibrationIcon;
@@ -55,9 +56,11 @@ public class AlarmListAdapter extends RecyclerView.Adapter<AlarmListAdapter.View
                                     SharedPreferences prefs = view.getContext().getSharedPreferences(view.getContext().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = prefs.edit();
                                     List<String> alarmList = new ArrayList<String>(Arrays.asList(prefs.getString("alarmList", null).split(",")));
-                                    editor.remove(alarmList.get(getAdapterPosition()));
-                                    editor.remove("" + alarmList.get(getAdapterPosition()) + "e");
-//                                    Toast.makeText(view.getContext(), "Removed alarm with id: " + alarmList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                                    String alarmId = alarmList.get(getAdapterPosition());
+                                    if (prefs.getBoolean(alarmId + "e", false))
+                                        AlarmController.DisableAlarm(Integer.parseInt(alarmId), v.getContext());
+                                    editor.remove(alarmId);
+                                    editor.remove(alarmId + "e");
                                     alarmList.remove(getAdapterPosition());
                                     editor.putString("alarmList", String.join(",", alarmList));
                                     editor.apply();
@@ -73,6 +76,7 @@ public class AlarmListAdapter extends RecyclerView.Adapter<AlarmListAdapter.View
                     return false;
                 }
             });
+            topBorderView = v.findViewById(R.id.topBorder);
             textView = v.findViewById(R.id.textView);
             flashlightIcon = v.findViewById(R.id.flashlightIcon);
             vibrationIcon = v.findViewById(R.id.vibrationIcon);
@@ -80,6 +84,7 @@ public class AlarmListAdapter extends RecyclerView.Adapter<AlarmListAdapter.View
             alarmEnabledSwitch = v.findViewById(R.id.alarmEnabledSwitch);
         }
 
+        public View getTopBorderView() { return topBorderView; }
         public TextView getTextView() {
             return textView;
         }
@@ -117,6 +122,7 @@ public class AlarmListAdapter extends RecyclerView.Adapter<AlarmListAdapter.View
         holder.getTextView().setText(
                 (alarmData.hour < 10 ? "0" : "") + alarmData.hour + ":" +
                 (alarmData.minute < 10 ? "0" : "") + alarmData.minute);
+        holder.getTopBorderView().setVisibility(position == 0 ? View.VISIBLE : View.INVISIBLE);
 
         holder.getAlarmEnabledSwitch().setChecked(sharedPrefs.getBoolean("" + alarmId + "e", false));
 

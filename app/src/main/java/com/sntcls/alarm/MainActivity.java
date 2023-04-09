@@ -24,11 +24,15 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(view.getContext(), AlarmEditActivity.class);
         startActivityForResult(intent, LAUNCH_ADD_ALARM_ACTIVITY);
+    }
+    public void OnSettingsButtonClicked(View view)
+    {
+        Intent intent = new Intent(view.getContext(), SettingsActivity.class);
+        startActivity(intent);
     }
 
     public void OnEditAlarm(View view, int alarmIndex)
@@ -105,18 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void RequestOverlayPermissions()
     {
-//        AlertDialog alert = new AlertDialog(this);
-//        alert.setTitle(getString(R.string.info_background_permissions_title));
-//        alert.setContent(getString(R.string.info_background_permissions_body));
-//        alert.setListener((dialog, ok) -> {
-//            if (ok) {
-//                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-//                        Uri.parse("package:" + activity.getPackageName()));
-//                activity.startActivityForResult(intent, 0);
-//            }
-//        });
-//        alert.show();
-
         AlertDialog.Builder alertDialogBuilder =
                 new AlertDialog.Builder(this)
                         .setTitle(getString(R.string.info_background_permissions_title))
@@ -127,10 +124,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivityForResult(intent, 0);
                             }
                         });
-
-// Show the AlertDialog.
-        AlertDialog alertDialog = alertDialogBuilder.show();
-
+        alertDialogBuilder.show();
     }
 }
 

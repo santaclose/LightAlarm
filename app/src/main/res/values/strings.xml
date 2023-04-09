@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Santalarm</string>
+    <string name="app_name">Light alarm</string>
     <string name="preference_file_key">com.sntcls.alarm.prefs</string>
-    <string name="info_background_permissions_title">Display over other apps permission</string>
+    <string name="info_background_permissions_title">Display over other apps permission required</string>
     <string name="info_background_permissions_body">Grant this permission for the application to work properly.</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>
