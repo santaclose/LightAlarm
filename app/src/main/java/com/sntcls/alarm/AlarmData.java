@@ -50,7 +50,9 @@ public class AlarmData
     {
         Intent intent = new Intent(context, AlarmReceiver.class);
         intent.putExtra(AlarmReceiver.EXTRA_ALARM_ID, alarmId);
-        return PendingIntent.getBroadcast(context, alarmId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        int pendingIntentFlags = PendingIntent.FLAG_UPDATE_CURRENT;
+        pendingIntentFlags |= android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S ? PendingIntent.FLAG_MUTABLE : 0;
+        return PendingIntent.getBroadcast(context, alarmId, intent, pendingIntentFlags);
     }
 
     public long getNextTime()
