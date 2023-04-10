@@ -32,6 +32,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Sunday"
             android:textOn="S"
             android:textOff="S"
             android:text="S"/>
@@ -41,6 +42,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Monday"
             android:textOn="M"
             android:textOff="M"
             android:text="M"/>
@@ -50,6 +52,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Tuesday"
             android:textOn="T"
             android:textOff="T"
             android:text="T"/>
@@ -59,6 +62,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Wednesday"
             android:textOn="W"
             android:textOff="W"
             android:text="W"/>
@@ -68,6 +72,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Thursday"
             android:textOn="T"
             android:textOff="T"
             android:text="T"/>
@@ -77,6 +82,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Friday"
             android:textOn="F"
             android:textOff="F"
             android:text="F"/>
@@ -86,6 +92,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/week_day_toggle"
+            android:tooltipText="Saturday"
             android:textOn="S"
             android:textOff="S"
             android:text="S"/>

@@ -20,6 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_button"
             android:onClick="OnSettingsButtonClicked"
+            android:tooltipText="Settings"
             />
     </androidx.appcompat.widget.Toolbar>
 
@@ -44,6 +45,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="OnAddAlarmButtonClicked"
         android:tint="#fff"
+        android:tooltipText="Add alarm"
         app:borderWidth="0dp"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
