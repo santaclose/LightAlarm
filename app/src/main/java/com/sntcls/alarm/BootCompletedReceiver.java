@@ -10,6 +10,8 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         String alarmListStringTemp = prefs.getString("alarmList", "");
+        if (alarmListStringTemp.length() == 0)
+            return;
         String[] alarmListTemp = alarmListStringTemp.split(",");
         for (String alarmIdString : alarmListTemp)
         {
