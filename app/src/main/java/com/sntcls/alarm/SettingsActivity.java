@@ -1,5 +1,6 @@
 package com.sntcls.alarm;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.Ringtone;
@@ -7,6 +8,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -34,6 +37,19 @@ public class SettingsActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.settings, new SettingsFragment())
                     .commit();
+        }
+
+        // ads
+        SharedPreferences prefs = this.getSharedPreferences(this.getResources().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        if (prefs.getBoolean("pref_ads_enabled", true))
+        {
+            List<View> adViews = new ArrayList<>();
+            adViews.add(findViewById(R.id.adView0));
+            AdController.ShowGoogleAdBanners(this, adViews);
+        }
+        else
+        {
+            ((ViewGroup)findViewById(R.id.adContainer)).removeAllViews();
         }
     }
 

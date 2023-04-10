@@ -14,16 +14,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AlarmRinger extends AppCompatActivity {
 
@@ -156,20 +151,5 @@ public class AlarmRinger extends AppCompatActivity {
             setVibrator(this, true);
         if (alarmData.ringtoneEnabled())
             setRingtone(this, true);
-
-        // ads
-        if (prefs.getBoolean("pref_ads_enabled", true))
-        {
-            List<View> adViews = new ArrayList<>();
-            adViews.add(findViewById(R.id.adView0));
-            adViews.add(findViewById(R.id.adView1));
-            adViews.add(findViewById(R.id.adView2));
-            adViews.add(findViewById(R.id.adView3));
-            AdController.ShowGoogleAdBanners(this, adViews);
-        }
-        else
-        {
-            ((ViewGroup)findViewById(R.id.adContainer)).removeAllViews();
-        }
     }
 }
