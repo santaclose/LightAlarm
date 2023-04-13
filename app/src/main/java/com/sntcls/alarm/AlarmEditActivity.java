@@ -88,6 +88,10 @@ public class AlarmEditActivity extends AppCompatActivity {
             alarmToEditId = alarmList.get(alarmToEditIndex);
             loadAlarmData(alarmToEditId);
         }
+        else
+        {
+            flashlightSwitch.setChecked(true);
+        }
     }
 
     public void OnSaveButtonClicked(View view)
