@@ -20,7 +20,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8693395406412846~9546921601" />
+            android:value="ca-app-pub-7749543867175809~9143538793" />
 
         <activity
             android:name=".AlarmRinger"
