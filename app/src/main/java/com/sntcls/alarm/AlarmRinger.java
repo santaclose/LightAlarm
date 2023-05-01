@@ -7,11 +7,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.hardware.camera2.CameraManager;
+import android.media.AudioAttributes;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.Window;
@@ -26,6 +28,9 @@ public class AlarmRinger extends AppCompatActivity {
 
     private CameraManager cameraManager = null;
     private String cameraId = null;
+    private Vibrator vibrator = null;
+    static final long[] VIBRATION_PATTERN = new long[]{500, 500};
+    static final int VIBRATION_REPEAT = 0;
 
     private boolean setFlashLight(Context context, boolean on)
     {
@@ -48,14 +53,25 @@ public class AlarmRinger extends AppCompatActivity {
         }
         return true;
     }
-
-    private void setVibrator(Context context, boolean on)
+    private boolean setVibrator(Context context, boolean on)
     {
-        Vibrator vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator == null)
+            vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        if (!vibrator.hasVibrator())
+            return false;
         if (on)
-            vibrator.vibrate(4000);
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                vibrator.vibrate(VibrationEffect.createWaveform(VIBRATION_PATTERN, VIBRATION_REPEAT), new AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .setUsage(AudioAttributes.USAGE_ALARM)
+                        .build());
+            else
+                vibrator.vibrate(VIBRATION_PATTERN, VIBRATION_REPEAT);
+        }
         else
             vibrator.cancel();
+        return true;
     }
 
     Ringtone ringtone = null;
@@ -81,6 +97,10 @@ public class AlarmRinger extends AppCompatActivity {
             }
             ringtone = RingtoneManager.getRingtone(context, alarmUri);
         }
+        ringtone.setAudioAttributes(new AudioAttributes.Builder()
+                            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                            .setUsage(AudioAttributes.USAGE_ALARM)
+                            .build());
         if (on)
             ringtone.play();
         else
@@ -148,7 +168,11 @@ public class AlarmRinger extends AppCompatActivity {
                 Toast.makeText(this, "Could not start flashlight.", Toast.LENGTH_LONG).show();
         }
         if (alarmData.vibrationEnabled())
-            setVibrator(this, true);
+        {
+            boolean vibratorWorks = setVibrator(this, true);
+            if (!vibratorWorks)
+                Toast.makeText(this, "Could not start vibrator.", Toast.LENGTH_LONG).show();
+        }
         if (alarmData.ringtoneEnabled())
             setRingtone(this, true);
     }
