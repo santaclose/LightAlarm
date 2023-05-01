@@ -51,7 +51,7 @@ public class AlarmRinger extends AppCompatActivity {
 
     private void setVibrator(Context context, boolean on)
     {
-        Vibrator vibrator = (Vibrator)context.getSystemService(context.VIBRATOR_SERVICE);
+        Vibrator vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
         if (on)
             vibrator.vibrate(4000);
         else
